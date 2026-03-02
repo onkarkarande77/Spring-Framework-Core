@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	 http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+  	http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx   
+   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+   <context:property-placeholder location="classpath:db.properties, classpath:loginDetail.properties"/>
+   
+   
+   <context:component-scan base-package="com.dao.jt"/>
+   <context:annotation-config/>
+   
+   <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+     <property name="driverClassName" value="${db.class}"/>
+     <property name="url" value="${db.url}"/>
+     <property name="username" value="${db.user}"/>
+     <property name="password" value="${db.password}"/>
+   </bean>
+   
+   <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+     <constructor-arg ref="ds"/>
+   </bean>
+   
+   
+   
+   
+   
+   
+   <!-- Here we use the annotations -->
+   <context:component-scan base-package="com.annotation"></context:component-scan>
+   <context:annotation-config/>
+   
+   
+   <!-- this is for the student data
+   <bean id="std" class="com.std.StdData">
+   <property name="stdId" value="100"/>
+   <property name="stdName" value="java"/>
+   <property name="stdHt" value="5.8"/>
+   
+     <constructor-arg value="2"/>
+     <constructor-arg value="spring"/>
+     <constructor-arg value="5.2"/>
+    
+    </bean> -->
+    
+   <!-- internal injection  --> 
+   <bean id="pr" class="com.internal.PersonData">
+    <property name="perId" value="100"/>
+    <property name="perName" value="java"/>
+    <property name="addr">
+       <bean id="ad" class="com.internal.Address">
+         <property name="city" value="pune"/>
+         <property name="state" value="MH"/>
+        </bean>
+    
+    </property>
+   </bean>
+   
+   <!-- getting from the properties file -->
+   <bean id="ld" class="com.prop.LoginBean">
+      <property name="userName" value="${login.user}"/>
+      <property name="userPwd" value="${login.password}"/>
+   </bean>
+   
+   <!-- resource injecting into to destination -->
+   <bean id="r" class="com.resource.ResourceInjection">
+      <property name="file" value="Onkar_Karande_Resume.pdf"/> 
+   </bean>
+   
+   <!-- using the collection -->
+   <bean id="l" class="com.collection.DemoList">
+    <property name="st">
+      <list>
+      <value>Java</value>
+      <value>Spring</value>
+      </list>
+     </property>
+   </bean>
+   
+   <!-- using the collection by set -->
+    <bean id="s" class="com.collection.DemoSet">
+      <property name="s">
+        <set>
+          <value>10</value>
+          <value>9</value>
+        </set>
+      </property>
+     </bean>
+     
+     <!-- collection Map -->
+    <bean id="m" class="com.collection.DemoMap">
+    <property name="ma">
+       <map>
+       <entry key="1" value="Java"/>
+       <entry key="2" value="Spring"/>
+       </map>
+    </property>
+   </bean>
+   
+   <!-- inject into the pojo class using the collection-->
+    <bean id="std" class="com.collclass.StudentData">
+      <constructor-arg value="1"/>
+      <constructor-arg value="Java"/>
+      <constructor-arg value="88"/>
+      <constructor-arg value="99"/>
+    </bean>
+    <bean id="sc" class="com.collclass.StdColl">
+      <property name="std1">
+         <list>
+               <ref bean="std"/>
+         </list>
+      </property>
+    </bean>
+ </beans>
