@@ -3,7 +3,7 @@ public class AccountBean {
    private Integer accId;
    private String accName;
    
-   
+   //this is our plane POJO that hold value of property 
  public AccountBean() {
 	super();
 	// TODO Auto-generated constructor stub
