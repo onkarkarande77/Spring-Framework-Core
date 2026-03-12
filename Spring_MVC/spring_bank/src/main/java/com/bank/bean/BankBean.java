@@ -45,8 +45,4 @@ public class BankBean {
 		return "BankBean [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", acctBl=" + acctBl
 				+ "]";
 	}
-
-   	
-   	
-
 }

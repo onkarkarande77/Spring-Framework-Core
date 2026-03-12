@@ -45,4 +45,6 @@ public class BankDAO {
     
   }
   
+  //for this method to the chk balance
+  
 }
