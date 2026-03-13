@@ -6,6 +6,7 @@ public class EmployeeBean {
    private String empName;
    private long empMobNo;
     
+   //this is plan POJO that hold the 
     public EmployeeBean() {
 	super();
 	// TODO Auto-generated constructor stub
