@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.EmployeeBean;
 import com.service.EmployeeService_I;
-
+//this is the controller class that handling the AIWR
 @Controller
 public class EmployeeController {
 @Autowired
