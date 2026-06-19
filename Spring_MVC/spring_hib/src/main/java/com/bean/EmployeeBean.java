@@ -7,7 +7,7 @@ public class EmployeeBean {
    private long empMobNo;
     
    //this is plan POJO that hold the 
-    public EmployeeBean() {
+    public EmployeeBean() { 
 	super();
 	// TODO Auto-generated constructor stub
   }
