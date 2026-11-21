@@ -7,7 +7,7 @@ public class StudentBean {
 	
 	public StudentBean() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub 
 	} 
 
 	public StudentBean(Integer stdId, String stdName, String city) {
